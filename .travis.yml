@@ -6,11 +6,10 @@ script:
 
 before_deploy:
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-- docker tag ion_web:latest saied89/ion_web:$TRAVIS_TAG
 
 deploy:
   provider: script
-  script: docker push saied89/ion_web:$TRAVIS_TAG
+  script: docker-compose push
   on:
     tags: true
     repo: saied89/ion
